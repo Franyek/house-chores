@@ -4,13 +4,13 @@ A step-by-step plan for building a chore tracking iOS app. Each task is designed
 
 ## Phase 1: Setup & Environment
 
-- [ ] **Install Xcode** - Download from Mac App Store (runs in background, no focus needed)
-- [ ] **Create your first project** - Open Xcode → New Project → iOS App → SwiftUI
-- [ ] **Run the default app** - Press play button, see "Hello World" in simulator
+- [x] **Install Xcode** - Download from Mac App Store (runs in background, no focus needed)
+- [x] **Create your first project** - Open Xcode → New Project → iOS App → SwiftUI
+- [x] **Run the default app** - Press play button, see "Hello World" in simulator
 
 ## Phase 2: Learn Basic SwiftUI
 
-- [ ] **Modify text** - Change "Hello World" to something else, see it update
+- [x] **Modify text** - Change "Hello World" to something else, see it update
 - [ ] **Add a button** - Add one button that prints to console when clicked
 - [ ] **Create a list** - Display 3 hardcoded chore names in a list
 - [ ] **Add a simple model** - Create a Chore struct with name and date properties
