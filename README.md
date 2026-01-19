@@ -11,9 +11,9 @@ A step-by-step plan for building a chore tracking iOS app. Each task is designed
 ## Phase 2: Learn Basic SwiftUI
 
 - [x] **Modify text** - Change "Hello World" to something else, see it update
-- [ ] **Add a button** - Add one button that prints to console when clicked
-- [ ] **Create a list** - Display 3 hardcoded chore names in a list
-- [ ] **Add a simple model** - Create a Chore struct with name and date properties
+- [x] **Add a button** - Add one button that prints to console when clicked
+- [x] **Create a list** - Display 3 hardcoded chore names in a list
+- [x] **Add a simple model** - Create a Chore struct with name and date properties
 
 ## Phase 3: Core Functionality
 
