@@ -17,12 +17,12 @@ A step-by-step plan for building a chore tracking iOS app. Each task is designed
 
 ## Phase 3: Core Functionality
 
-- [ ] **Add timestamp** - Make button store current date/time for one chore
-- [ ] **Display the date** - Show "Last done: X days ago" under chore name
-- [ ] **Add multiple chores** - Make the list work with 3-5 different chores
-- [ ] **Add new chore UI** - Create a simple form to add a chore name
-- [ ] **Make "mark as done" work** - Button updates the timestamp for that chore
-- [ ] **Persist data** - Save chores so they survive app restart (UserDefaults first, then CoreData later)
+- [x] **Add timestamp** - Make button store current date/time for one chore
+- [x] **Display the date** - Show "Last done: X days ago" under chore name
+- [x] **Add multiple chores** - Make the list work with 3-5 different chores
+- [x] **Add new chore UI** - Create a simple form to add a chore name
+- [x] **Make "mark as done" work** - Button updates the timestamp for that chore
+- [X] **Persist data** - Save chores so they survive app restart (UserDefaults first, then CoreData later)
 
 ## Phase 4: Polish
 
