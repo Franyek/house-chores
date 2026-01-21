@@ -23,12 +23,13 @@ A step-by-step plan for building a chore tracking iOS app. Each task is designed
 - [x] **Add new chore UI** - Create a simple form to add a chore name
 - [x] **Make "mark as done" work** - Button updates the timestamp for that chore
 - [X] **Persist data** - Save chores so they survive app restart (UserDefaults first, then CoreData later)
+- [X] **Make "mark as done" functional - Tap chore to update lastDone to current date
+- [x] **Sort by urgency - Show overdue chores at the top
 
 ## Phase 4: Polish
 
 - [ ] **Add icons** - Visual indicators for each chore type
 - [ ] **Color coding** - Show overdue items in red/yellow
-- [ ] **Sort by urgency** - Most overdue items at top
 - [ ] **Edit/delete** - Manage your chore list
 
 ## Notes
