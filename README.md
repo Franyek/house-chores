@@ -29,7 +29,7 @@ A step-by-step plan for building a chore tracking iOS app. Each task is designed
 ## Phase 4: Polish
 
 - [ ] **Add icons** - Visual indicators for each chore type
-- [ ] **Color coding** - Show overdue items in red/yellow
+- [x] **Color coding** - Show overdue items in red/yellow
 - [ ] **Edit/delete** - Manage your chore list
 
 ## Notes
