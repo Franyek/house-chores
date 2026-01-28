@@ -30,7 +30,7 @@ A step-by-step plan for building a chore tracking iOS app. Each task is designed
 
 - [ ] **Add icons** - Visual indicators for each chore type
 - [x] **Color coding** - Show overdue items in red/yellow
-- [ ] **Edit/delete** - Manage your chore list
+- [x] **Edit/delete** - Manage your chore list
 
 ## Notes
 
