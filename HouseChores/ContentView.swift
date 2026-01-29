@@ -7,20 +7,6 @@
 
 import SwiftUI
 
-struct Chore: Codable, Equatable, Identifiable {
-    let id: UUID
-    var name: String
-    var lastDone: Date?
-    var frequencyInDays: Int
-    
-    init(name: String, lastDone: Date? = nil, frequencyInDays: Int) {
-        self.id = UUID()
-        self.name = name
-        self.lastDone = lastDone
-        self.frequencyInDays = frequencyInDays
-    }
-}
-
 struct ContentView: View {
     @State private var chores: [Chore] = [
         Chore(name: "Watering plants", lastDone: Date(), frequencyInDays: 7),
