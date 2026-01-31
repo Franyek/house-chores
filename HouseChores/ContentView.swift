@@ -8,40 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var chores: [Chore] = [
-        Chore(name: "Watering plants", lastDone: Date(), frequencyInDays: 7),
-        Chore(name: "Hoovering the living room", lastDone: nil, frequencyInDays: 5),
-        Chore(name: "Clean the downstairs toilet", lastDone: Date(), frequencyInDays: 7)
-    ]
     
-    var sortedChores: [Chore] {
-        chores.sorted { (chore1, chore2) -> Bool in
-            let lastDone1 = urgencyScore(for: chore1)
-            let lastDone2 = urgencyScore(for: chore2)
-            return lastDone1 > lastDone2
-        }
-    }
-    
+    @StateObject var store = ChoreStore()
     @State var showingAddChore = false
     @State var choreToEdit: Chore?
     
     var body: some View {
         NavigationStack {
-            List(sortedChores) { chore in
+            List(store.sortedChores) { chore in
                 Button(action: {
-                    if let index = chores.firstIndex(where: { $0.id == chore.id }) {
-                        chores[index].lastDone = Date()
-                    }
+                    store.markAsDone(id: chore.id)
                 }){
                     VStack(alignment: .leading) {
                         Text(chore.name).font(.headline)
                         HStack {
                             if let lastDone = chore.lastDone {
-                                let days = daysAgo(from: lastDone)
+                                let days = store.daysAgo(from: lastDone)
                                 let daysOverdue = days - chore.frequencyInDays
                                 Text("\(days) days ago")
                                     .font(.subheadline)
-                                    .foregroundColor(colorForOverdue(daysOverdue))
+                                    .foregroundColor(store.colorForOverdue(daysOverdue))
                             } else {
                                 Text("Never done")
                                     .font(.subheadline)
@@ -58,9 +44,7 @@ struct ContentView: View {
                 }
                 .swipeActions(edge: .trailing){
                     Button(role: .destructive){
-                        if let index = chores.firstIndex(where: { $0.id == chore.id }) {
-                            chores.remove(at: index)
-                        }
+                        store.deleteChore(id: chore.id)
                     } label: {
                         Label("Delete", systemImage: "trash")
                     }
@@ -82,62 +66,17 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $showingAddChore) {
-                AddChoreView(chores: $chores)
+                AddChoreView(store: store)
             }
             .sheet(item: $choreToEdit) { chore in
-                EditChoreView(chores: $chores, chore: chore)
+                EditChoreView(store: store, chore: chore)
             }
-            .onAppear {
-                loadChores()
-            }
-            .onChange(of: chores) {
-                saveChores()
-            }
-        }
-    }
-    
-    func saveChores() {
-        if let encoded = try? JSONEncoder().encode(chores) {
-            UserDefaults.standard.set(encoded, forKey: "chores")
-        }
-    }
-    
-    func loadChores() {
-        if let savedChores = UserDefaults.standard.data(forKey: "chores"),
-           let loadedChores = try? JSONDecoder().decode([Chore].self, from: savedChores) {
-            chores = loadedChores
-        }
-    }
-    
-    func daysAgo(from date: Date) -> Int {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: date, to: Date())
-        return components.day ?? 0
-    }
-    
-    func urgencyScore(for chore: Chore) -> Int {
-        guard let lastDone = chore.lastDone else { return 1000 }
-        
-        let daysSinceLastDone = daysAgo(from: lastDone)
-        let daysOverdue = daysSinceLastDone - chore.frequencyInDays
-        return daysOverdue
-    }
-    
-    func colorForOverdue(_ daysOverdue: Int) -> Color {
-        if daysOverdue <= 0 {
-            return .gray  // On time or early
-        } else if daysOverdue == 1 {
-            return .yellow  // 1 day overdue - warning
-        } else if daysOverdue <= 3 {
-            return .orange  // 2-3 days overdue - getting urgent
-        } else {
-            return .red  // 4+ days overdue - very urgent
         }
     }
 }
 
 struct AddChoreView: View {
-    @Binding var chores: [Chore]
+    @ObservedObject var store: ChoreStore
     @Environment(\.dismiss) var dismiss
     @State private var choreName = ""
     @State private var frequencyInDays: Int = 7
@@ -158,8 +97,7 @@ struct AddChoreView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add") {
-                        let newChore = Chore(name: choreName, lastDone: nil, frequencyInDays: frequencyInDays)
-                        chores.append(newChore)
+                        store.addChore(name: choreName, frequencyInDays: frequencyInDays)
                         dismiss()
                     }
                     .disabled(choreName.isEmpty)
@@ -170,14 +108,14 @@ struct AddChoreView: View {
 }
 
 struct EditChoreView: View {
-    @Binding var chores: [Chore]
+    @ObservedObject var store: ChoreStore
     let chore: Chore
     @Environment(\.dismiss) var dismiss
     @State private var choreName: String
     @State private var frequencyInDays: Int
     
-    init(chores: Binding<[Chore]>, chore: Chore) {
-        self._chores = chores
+    init(store: ChoreStore, chore: Chore) {
+        self.store = store
         self.chore = chore
         self._choreName = State(initialValue: chore.name)
         self._frequencyInDays = State(initialValue: chore.frequencyInDays)
@@ -200,10 +138,7 @@ struct EditChoreView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-                        if let index = chores.firstIndex(where: { $0.id == chore.id }) {
-                            chores[index].name = choreName
-                            chores[index].frequencyInDays = frequencyInDays
-                        }
+                        store.updateChore(id: chore.id, name: choreName, frequencyInDays: frequencyInDays)
                         dismiss()
                     }
                     .disabled(choreName.isEmpty)

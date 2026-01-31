@@ -6,8 +6,8 @@ Plan to take your chore tracker from working prototype to App Store release.
 
 ### Session 1: Separate Model & Data Layer
 - [X] Create `Models/Chore.swift` - Move Chore struct to its own file
-- [ ] Create `Services/ChoreStore.swift` - Move persistence logic out of view
-- [ ] Update ContentView to use ChoreStore
+- [X] Create `Services/ChoreStore.swift` - Move persistence logic out of view
+- [X] Update ContentView to use ChoreStore
 
 ### Session 2: Separate Views
 - [ ] Create `Views/ContentView.swift` - Main list view
