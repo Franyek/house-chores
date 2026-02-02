@@ -10,10 +10,10 @@ Plan to take your chore tracker from working prototype to App Store release.
 - [X] Update ContentView to use ChoreStore
 
 ### Session 2: Separate Views
-- [ ] Create `Views/ContentView.swift` - Main list view
-- [ ] Create `Views/AddChoreView.swift` - Add chore form
-- [ ] Create `Views/EditChoreView.swift` - Edit chore form
-- [ ] Create `Views/Components/ChoreRow.swift` - Individual list item
+- [X] Create `Views/ContentView.swift` - Main list view
+- [X] Create `Views/AddChoreView.swift` - Add chore form
+- [X] Create `Views/EditChoreView.swift` - Edit chore form
+- [X] Create `Views/Components/ChoreRow.swift` - Individual list item
 
 ### Session 3: Helpers & Extensions
 - [ ] Create `Helpers/DateHelper.swift` - Date calculation functions
