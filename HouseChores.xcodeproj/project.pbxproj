@@ -13,12 +13,23 @@
 		AA43BC2A2F29F8FB00C38282 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AA43BC0B2F29F8FB00C38282 /* .gitignore */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AA43BC712F30DF7800C38282 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA43BB472F13800100C38282 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA43BB4E2F13800100C38282;
+			remoteInfo = HouseChores;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		AA43BB4F2F13800100C38282 /* HouseChores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseChores.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA43BB8C2F29F79400C38282 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AA43BB8D2F29F79400C38282 /* README-1.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "README-1.md"; sourceTree = "<group>"; };
 		AA43BB8E2F29F79400C38282 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		AA43BC0B2F29F8FB00C38282 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		AA43BC6D2F30DF7800C38282 /* HouseChoresTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HouseChoresTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -27,10 +38,22 @@
 			path = HouseChores;
 			sourceTree = "<group>";
 		};
+		AA43BC6E2F30DF7800C38282 /* HouseChoresTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HouseChoresTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AA43BB4C2F13800100C38282 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA43BC6A2F30DF7800C38282 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,6 +70,7 @@
 				AA43BB8C2F29F79400C38282 /* README.md */,
 				AA43BB8E2F29F79400C38282 /* TODO.md */,
 				AA43BB512F13800100C38282 /* HouseChores */,
+				AA43BC6E2F30DF7800C38282 /* HouseChoresTests */,
 				AA43BB502F13800100C38282 /* Products */,
 				AA43BC0B2F29F8FB00C38282 /* .gitignore */,
 			);
@@ -56,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				AA43BB4F2F13800100C38282 /* HouseChores.app */,
+				AA43BC6D2F30DF7800C38282 /* HouseChoresTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,6 +110,29 @@
 			productReference = AA43BB4F2F13800100C38282 /* HouseChores.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AA43BC6C2F30DF7800C38282 /* HouseChoresTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA43BC732F30DF7800C38282 /* Build configuration list for PBXNativeTarget "HouseChoresTests" */;
+			buildPhases = (
+				AA43BC692F30DF7800C38282 /* Sources */,
+				AA43BC6A2F30DF7800C38282 /* Frameworks */,
+				AA43BC6B2F30DF7800C38282 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA43BC722F30DF7800C38282 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AA43BC6E2F30DF7800C38282 /* HouseChoresTests */,
+			);
+			name = HouseChoresTests;
+			packageProductDependencies = (
+			);
+			productName = HouseChoresTests;
+			productReference = AA43BC6D2F30DF7800C38282 /* HouseChoresTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -97,6 +145,10 @@
 				TargetAttributes = {
 					AA43BB4E2F13800100C38282 = {
 						CreatedOnToolsVersion = 26.2;
+					};
+					AA43BC6C2F30DF7800C38282 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = AA43BB4E2F13800100C38282;
 					};
 				};
 			};
@@ -115,6 +167,7 @@
 			projectRoot = "";
 			targets = (
 				AA43BB4E2F13800100C38282 /* HouseChores */,
+				AA43BC6C2F30DF7800C38282 /* HouseChoresTests */,
 			);
 		};
 /* End PBXProject section */
@@ -131,6 +184,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA43BC6B2F30DF7800C38282 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -141,7 +201,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA43BC692F30DF7800C38282 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA43BC722F30DF7800C38282 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA43BB4E2F13800100C38282 /* HouseChores */;
+			targetProxy = AA43BC712F30DF7800C38282 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AA43BB582F13800300C38282 /* Debug */ = {
@@ -325,6 +400,48 @@
 			};
 			name = Release;
 		};
+		AA43BC742F30DF7800C38282 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 997Z2PYRDJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = franyek.HouseChoresTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HouseChores.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HouseChores";
+			};
+			name = Debug;
+		};
+		AA43BC752F30DF7800C38282 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 997Z2PYRDJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = franyek.HouseChoresTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HouseChores.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HouseChores";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -342,6 +459,15 @@
 			buildConfigurations = (
 				AA43BB5B2F13800300C38282 /* Debug */,
 				AA43BB5C2F13800300C38282 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA43BC732F30DF7800C38282 /* Build configuration list for PBXNativeTarget "HouseChoresTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA43BC742F30DF7800C38282 /* Debug */,
+				AA43BC752F30DF7800C38282 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

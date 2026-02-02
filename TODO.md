@@ -42,8 +42,8 @@ ChoreTracker/
 ## 4.2: Testing (2-3 sessions)
 
 ### Session 1: Setup & Model Tests
-- [ ] Enable testing target in Xcode
-- [ ] Create `ChoreTests.swift` - Test Chore model creation, Codable encoding/decoding
+- [X] Enable testing target in Xcode
+- [X] Create `ChoreTests.swift` - Test Chore model creation, Codable encoding/decoding
 - [ ] Create `DateHelperTests.swift` - Test date calculations
 
 ### Session 2: Business Logic Tests
