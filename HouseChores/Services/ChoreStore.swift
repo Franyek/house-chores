@@ -16,7 +16,11 @@ class ChoreStore: ObservableObject {
         }
     }
     
-    init() {
+    private let userDefaults: UserDefaults
+    private let storageKey = "chores"
+    
+    init(userDefaults: UserDefaults = .standard) {
+        self.userDefaults = userDefaults
         loadChores()
     }
     
@@ -77,11 +81,11 @@ class ChoreStore: ObservableObject {
     // Persistence
     private func saveChores() {
         if let encoded = try? JSONEncoder().encode(chores) {
-            UserDefaults.standard.set(encoded, forKey: "chores")
+            userDefaults.set(encoded, forKey: storageKey)
         }
     }
     private func loadChores() {
-        if let savedChores = UserDefaults.standard.data(forKey: "chores"),
+        if let savedChores = userDefaults.data(forKey: storageKey),
            let loadedChores = try? JSONDecoder().decode([Chore].self, from: savedChores) {
             chores = loadedChores
         }

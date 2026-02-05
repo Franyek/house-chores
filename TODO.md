@@ -47,7 +47,8 @@ ChoreTracker/
 - [ ] Create `DateHelperTests.swift` - Test date calculations
 
 ### Session 2: Business Logic Tests
-- [ ] Create `ChoreStoreTests.swift` - Test save/load, add/edit/delete operations
+- [X] Create `ChoreStoreTests.swift` - add/edit/delete operations
+- [ ] Create `ChoreStoreTests.swift` - Test save/load, 
 - [ ] Test sorting logic
 - [ ] Test urgency calculations
 
@@ -57,19 +58,22 @@ ChoreTracker/
 
 ## 4.3: UI/UX Polish (2-3 sessions)
 
-### Session 1: Visual Improvements
+### Session 1: Edit Mode (Prevent Accidental Mark as Done)
+- [ ] Add edit mode toggle button in toolbar
+- [ ] In edit mode: tap opens edit sheet instead of marking done
+- [ ] Add visual indicator when in edit mode (chevron or title change)
+- [ ] Keep swipe actions available in both modes
+
+### Session 2: Visual Improvements
 - [ ] Add app icon (use SF Symbols or design simple icon)
 - [ ] Add chore icons/emojis (optional)
 - [ ] Improve spacing and padding
 - [ ] Add subtle animations (button press, list updates)
 
-### Session 2: Better Empty States
+### Session 3: Better Empty States & Accessibility
 - [ ] Add "no chores" empty state with helpful message
 - [ ] Add onboarding hints for first-time users
-
-### Session 3: Accessibility & Polish
 - [ ] Test with Dynamic Type (larger text sizes)
-- [ ] Add accessibility labels
 - [ ] Test in Dark Mode
 - [ ] Add haptic feedback on mark as done
 
