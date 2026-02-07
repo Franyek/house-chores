@@ -11,6 +11,7 @@
 		AA43BB902F29F79400C38282 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = AA43BB8E2F29F79400C38282 /* TODO.md */; };
 		AA43BB912F29F79400C38282 /* README-1.md in Resources */ = {isa = PBXBuildFile; fileRef = AA43BB8D2F29F79400C38282 /* README-1.md */; };
 		AA43BC2A2F29F8FB00C38282 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AA43BC0B2F29F8FB00C38282 /* .gitignore */; };
+		AA43BC7E2F37AF3700C38282 /* Edit-MODE-IDEAS.md in Sources */ = {isa = PBXBuildFile; fileRef = AA43BC7D2F37AF1D00C38282 /* Edit-MODE-IDEAS.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,7 @@
 		AA43BB8E2F29F79400C38282 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		AA43BC0B2F29F8FB00C38282 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		AA43BC6D2F30DF7800C38282 /* HouseChoresTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HouseChoresTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA43BC7D2F37AF1D00C38282 /* Edit-MODE-IDEAS.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Edit-MODE-IDEAS.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -66,6 +68,7 @@
 		AA43BB462F13800100C38282 = {
 			isa = PBXGroup;
 			children = (
+				AA43BC7D2F37AF1D00C38282 /* Edit-MODE-IDEAS.md */,
 				AA43BB8D2F29F79400C38282 /* README-1.md */,
 				AA43BB8C2F29F79400C38282 /* README.md */,
 				AA43BB8E2F29F79400C38282 /* TODO.md */,
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA43BC7E2F37AF3700C38282 /* Edit-MODE-IDEAS.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -59,9 +59,9 @@ ChoreTracker/
 ## 4.3: UI/UX Polish (2-3 sessions)
 
 ### Session 1: Edit Mode (Prevent Accidental Mark as Done)
-- [ ] Add edit mode toggle button in toolbar
-- [ ] In edit mode: tap opens edit sheet instead of marking done
-- [ ] Add visual indicator when in edit mode (chevron or title change)
+- [X] Add edit mode toggle button in toolbar
+- [X] In edit mode: tap opens edit sheet instead of marking done
+- [X] Add visual indicator when in edit mode (chevron or title change)
 - [ ] Keep swipe actions available in both modes
 
 ### Session 2: Visual Improvements
@@ -196,3 +196,4 @@ Assuming 15-30 min focused sessions:
 - iCloud sync across devices
 - Share chores with family members
 - Recurring chore templates
+- Check Edit mode visualisation ideas
