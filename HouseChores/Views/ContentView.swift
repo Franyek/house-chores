@@ -28,6 +28,9 @@ struct ContentView: View {
                     }) {
                         ChoreRow(chore: chore, store: store, isEditMode: isEditMode)
                     }
+                .scrollContentBackground(isEditMode ? .hidden : .visible)
+                .background(isEditMode ? Color.orange.opacity(0.1) : Color.clear)
+                .animation(.easeInOut(duration: 0.3), value: isEditMode)
                 .swipeActions(edge: .trailing){
                     Button(role: .destructive){
                         store.deleteChore(id: chore.id)
@@ -45,16 +48,26 @@ struct ContentView: View {
                 }
             }
             .padding()
-            .navigationTitle(isEditMode ? "Edit Chores" : "Chores")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading){
-                    Button(isEditMode ? "Done" : "Edit") {
+                    Button(action: {
                         isEditMode.toggle()
+                    }) {
+                        Image(systemName: isEditMode ? "checkmark" : "pencil")
                     }
                 }
-                ToolbarItem(placement: .navigationBarLeading){
-                    Button("Add Chore") {
+                ToolbarItem(placement: .principal){
+                    Text(isEditMode ? "Edit Chores" : "Chores")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button(action: {
                         showingAddChore = true
+                    }){
+                        Image(systemName: "plus")
                     }
                 }
             }
