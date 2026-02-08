@@ -15,10 +15,10 @@ Plan to take your chore tracker from working prototype to App Store release.
 - [X] Create `Views/EditChoreView.swift` - Edit chore form
 - [X] Create `Views/Components/ChoreRow.swift` - Individual list item
 
-### Session 3: Helpers & Extensions
-- [ ] Create `Helpers/DateHelper.swift` - Date calculation functions
-- [ ] Create `Helpers/ColorHelper.swift` - Color coding logic
-- [ ] Create `Extensions/Color+Theme.swift` - Custom color definitions
+### ~~Session 3: Helpers & Extensions~~
+~~- [ ] Create `Helpers/DateHelper.swift` - Date calculation functions~~
+~~ - [ ] Create `Helpers/ColorHelper.swift` - Color coding logic~~
+~~- [ ] Create `Extensions/Color+Theme.swift` - Custom color definitions~~
 
 ### File Structure Goal:
 ```

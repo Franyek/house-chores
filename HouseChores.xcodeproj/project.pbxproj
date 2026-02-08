@@ -11,7 +11,6 @@
 		AA43BB902F29F79400C38282 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = AA43BB8E2F29F79400C38282 /* TODO.md */; };
 		AA43BB912F29F79400C38282 /* README-1.md in Resources */ = {isa = PBXBuildFile; fileRef = AA43BB8D2F29F79400C38282 /* README-1.md */; };
 		AA43BC2A2F29F8FB00C38282 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AA43BC0B2F29F8FB00C38282 /* .gitignore */; };
-		AA43BC7E2F37AF3700C38282 /* Edit-MODE-IDEAS.md in Sources */ = {isa = PBXBuildFile; fileRef = AA43BC7D2F37AF1D00C38282 /* Edit-MODE-IDEAS.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,7 +200,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA43BC7E2F37AF3700C38282 /* Edit-MODE-IDEAS.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
