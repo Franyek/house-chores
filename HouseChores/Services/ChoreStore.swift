@@ -25,8 +25,12 @@ class ChoreStore: ObservableObject {
     }
     
     // CRUD Operations
-    func addChore(name: String, frequencyInDays: Int) {
-        let newChore = Chore(name: name, lastDone: nil, frequencyInDays: frequencyInDays)
+    func addChore(name: String, frequencyInDays: Int, emoji: String? = nil) {
+        let newChore = Chore(name: name,
+                             lastDone: nil,
+                             frequencyInDays: frequencyInDays,
+                             emoji: emoji
+        )
         chores.append(newChore)
     }
     func deleteChore(id: UUID) {
@@ -34,10 +38,11 @@ class ChoreStore: ObservableObject {
             chores.remove(at: index)
         }
     }
-    func updateChore(id: UUID, name: String, frequencyInDays: Int) {
+    func updateChore(id: UUID, name: String, frequencyInDays: Int, emoji: String) {
         if let index = chores.firstIndex(where: { $0.id == id }) {
             chores[index].name = name
             chores[index].frequencyInDays = frequencyInDays
+            chores[index].emoji = emoji
         }
     }
     func markAsDone(id: UUID) {

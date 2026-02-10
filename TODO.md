@@ -65,8 +65,8 @@ ChoreTracker/
 - [ ] Keep swipe actions available in both modes
 
 ### Session 2: Visual Improvements
-- [ ] Add app icon (use SF Symbols or design simple icon)
-- [ ] Add chore icons/emojis (optional)
+- [X] Add app icon (use SF Symbols or design simple icon)
+- [X] Add chore icons/emojis (optional)
 - [ ] Improve spacing and padding
 - [ ] Add subtle animations (button press, list updates)
 

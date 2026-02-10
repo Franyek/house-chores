@@ -14,6 +14,10 @@ struct ChoreRow: View {
     
     var body: some View {
         HStack {
+            if let emoji = chore.emoji {
+                    Text(emoji)
+                        .font(.title2)
+            }
             VStack(alignment: .leading) {
                 Text(chore.name).font(.headline)
                 HStack {
