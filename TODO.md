@@ -71,7 +71,7 @@ ChoreTracker/
 - [ ] Add subtle animations (button press, list updates)
 
 ### Session 3: Better Empty States & Accessibility
-- [ ] Add "no chores" empty state with helpful message
+- [X] Add "no chores" empty state with helpful message
 - [ ] Add onboarding hints for first-time users
 - [ ] Test with Dynamic Type (larger text sizes)
 - [ ] Test in Dark Mode

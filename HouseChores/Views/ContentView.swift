@@ -16,35 +16,45 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List(store.sortedChores) { chore in
-                Button(action: {
-                        if isEditMode {
-                            // In edit mode, tap opens edit sheet
-                            choreToEdit = chore
-                        } else {
-                            // In normal mode, tap marks as done
-                            store.markAsDone(id: chore.id)
+            Group {
+                if store.chores.isEmpty {
+                    ContentUnavailableView(
+                        "No Chores Yet",
+                        systemImage: "checkmark.circle",
+                        description: Text("Tap + to add your first chore.")
+                    )
+                } else {
+                    List(store.sortedChores) { chore in
+                        Button(action: {
+                            if isEditMode {
+                                // In edit mode, tap opens edit sheet
+                                choreToEdit = chore
+                            } else {
+                                // In normal mode, tap marks as done
+                                store.markAsDone(id: chore.id)
+                            }
+                        }) {
+                            ChoreRow(chore: chore, store: store, isEditMode: isEditMode)
                         }
-                    }) {
-                        ChoreRow(chore: chore, store: store, isEditMode: isEditMode)
+                        .scrollContentBackground(isEditMode ? .hidden : .visible)
+                        .background(isEditMode ? Color.orange.opacity(0.1) : Color.clear)
+                        .animation(.easeInOut(duration: 0.3), value: isEditMode)
+                        .swipeActions(edge: .trailing){
+                            Button(role: .destructive){
+                                store.deleteChore(id: chore.id)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
+                        .swipeActions(edge: .leading){
+                            Button{
+                                choreToEdit = chore
+                            } label: {
+                                Label("Edit", systemImage: "pencil")
+                            }
+                            .tint(.blue)
+                        }
                     }
-                .scrollContentBackground(isEditMode ? .hidden : .visible)
-                .background(isEditMode ? Color.orange.opacity(0.1) : Color.clear)
-                .animation(.easeInOut(duration: 0.3), value: isEditMode)
-                .swipeActions(edge: .trailing){
-                    Button(role: .destructive){
-                        store.deleteChore(id: chore.id)
-                    } label: {
-                        Label("Delete", systemImage: "trash")
-                    }
-                }
-                .swipeActions(edge: .leading){
-                    Button{
-                        choreToEdit = chore
-                    } label: {
-                        Label("Edit", systemImage: "pencil")
-                    }
-                    .tint(.blue)
                 }
             }
             .padding()
