@@ -2,7 +2,7 @@
 
 ## 1. Core Missing Features
 
-- [ ] **Edit last done date** - Allow editing the lastDone date manually (for when you forgot to record it)
+- [X] **Edit last done date** - Allow editing the lastDone date manually (for when you forgot to record it)
 - [X] **Haptic feedback** - Add subtle vibration when marking a chore as done
 - [X] **Confirm before delete** - Show confirmation dialog before deleting a chore (prevent accidental deletes)
 

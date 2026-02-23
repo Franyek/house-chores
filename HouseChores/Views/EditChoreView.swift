@@ -15,6 +15,8 @@ struct EditChoreView: View {
     @State private var frequencyInDays: Int
     @State private var selectedEmoji: String
     @State private var showingEmojiPicker = false
+    @State private var lastDone: Date?
+    @State private var showingDatePicker = false
     
     init(store: ChoreStore, chore: Chore) {
         self.store = store
@@ -22,6 +24,7 @@ struct EditChoreView: View {
         self._choreName = State(initialValue: chore.name)
         self._frequencyInDays = State(initialValue: chore.frequencyInDays)
         self._selectedEmoji = State(initialValue: chore.emoji ?? "")
+        self._lastDone = State(initialValue: chore.lastDone)
     }
     
     var body: some View {
@@ -44,6 +47,35 @@ struct EditChoreView: View {
                     }
                 }
                 Stepper("Every \(frequencyInDays) days", value: $frequencyInDays, in: 1...365)
+                
+                Section("Last Completed") {
+                    if let date = lastDone {
+                        HStack {
+                            Text("Last done")
+                            Spacer()
+                            Text(date.formatted(date: .abbreviated, time: .omitted))
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        Button("Change Date") {
+                            showingDatePicker = true
+                        }
+                        
+                        Button("Clear Date", role: .destructive) {
+                            lastDone = nil
+                        }
+                    } else {
+                        HStack {
+                            Text("Never completed")
+                                .foregroundColor(.secondary)
+                            Spacer()
+                            Button("Set Date") {
+                                lastDone = Date()
+                                showingDatePicker = true
+                            }
+                        }
+                    }
+                }
             }
             .navigationTitle("Edit Chore")
             .navigationBarTitleDisplayMode(.inline)
@@ -55,7 +87,13 @@ struct EditChoreView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-                        store.updateChore(id: chore.id, name: choreName, frequencyInDays: frequencyInDays, emoji: selectedEmoji)
+                        store.updateChore(
+                            id: chore.id,
+                            name: choreName,
+                            frequencyInDays: frequencyInDays,
+                            emoji: selectedEmoji,
+                            lastDone: lastDone
+                        )
                         dismiss()
                     }
                     .disabled(choreName.isEmpty)
@@ -63,6 +101,9 @@ struct EditChoreView: View {
             }
             .sheet(isPresented: $showingEmojiPicker) {
                 EmojiPickerView(selectedEmoji: $selectedEmoji)
+            }
+            .sheet(isPresented: $showingDatePicker) {
+                DatePickerSheet(selectedDate: $lastDone)
             }
         }
     }

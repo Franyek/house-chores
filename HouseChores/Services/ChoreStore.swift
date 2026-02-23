@@ -38,11 +38,12 @@ class ChoreStore: ObservableObject {
             chores.remove(at: index)
         }
     }
-    func updateChore(id: UUID, name: String, frequencyInDays: Int, emoji: String) {
+    func updateChore(id: UUID, name: String, frequencyInDays: Int, emoji: String? = nil, lastDone: Date? = nil) {
         if let index = chores.firstIndex(where: { $0.id == id }) {
             chores[index].name = name
             chores[index].frequencyInDays = frequencyInDays
             chores[index].emoji = emoji
+            chores[index].lastDone = lastDone
         }
     }
     func markAsDone(id: UUID) {
