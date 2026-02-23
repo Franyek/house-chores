@@ -13,6 +13,7 @@ struct ContentView: View {
     @State var showingAddChore = false
     @State var choreToEdit: Chore?
     @State var isEditMode = false
+    @GestureState private var isPressed = false
     
     var body: some View {
         NavigationStack {
@@ -30,12 +31,23 @@ struct ContentView: View {
                                 // In edit mode, tap opens edit sheet
                                 choreToEdit = chore
                             } else {
+                                let generator = UIImpactFeedbackGenerator(style: .medium)
+                                generator.impactOccurred()
+                                
                                 // In normal mode, tap marks as done
                                 store.markAsDone(id: chore.id)
                             }
                         }) {
                             ChoreRow(chore: chore, store: store, isEditMode: isEditMode)
                         }
+                        .buttonStyle(.plain)
+                        .scaleEffect(isPressed ? 0.95 : 1.0)
+                        .gesture(
+                                    DragGesture(minimumDistance: 0)
+                                        .updating($isPressed) { _, state, _ in
+                                            state = true
+                                        }
+                                )
                         .scrollContentBackground(isEditMode ? .hidden : .visible)
                         .background(isEditMode ? Color.orange.opacity(0.1) : Color.clear)
                         .animation(.easeInOut(duration: 0.3), value: isEditMode)
