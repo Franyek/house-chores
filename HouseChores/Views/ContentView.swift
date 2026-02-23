@@ -13,6 +13,8 @@ struct ContentView: View {
     @State var showingAddChore = false
     @State var choreToEdit: Chore?
     @State var isEditMode = false
+    @State var choreToDelete: Chore?
+    @State var showingDeleteConfirmation = false
     @GestureState private var isPressed = false
     
     var body: some View {
@@ -53,7 +55,8 @@ struct ContentView: View {
                         .animation(.easeInOut(duration: 0.3), value: isEditMode)
                         .swipeActions(edge: .trailing){
                             Button(role: .destructive){
-                                store.deleteChore(id: chore.id)
+                                choreToDelete = chore
+                                showingDeleteConfirmation = true
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }
@@ -98,6 +101,17 @@ struct ContentView: View {
             }
             .sheet(item: $choreToEdit) { chore in
                 EditChoreView(store: store, chore: chore)
+            }
+            .alert("Delete Chore?", isPresented: $showingDeleteConfirmation, presenting: choreToDelete) { chore in
+                Button("Cancel", role: .cancel) { }
+                Button("Delete", role: .destructive) {
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.warning)
+                    
+                    store.deleteChore(id: chore.id)
+                }
+            } message: { chore in
+                Text("Are you sure you want to delete '\(chore.name)'?")
             }
         }
     }
