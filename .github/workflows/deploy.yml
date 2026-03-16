@@ -1,0 +1,92 @@
+name: iOS CI/CD
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Select Xcode
+      run: sudo xcode-select -s /Applications/Xcode_15.2.app
+
+    - name: Build
+      run: |
+        xcodebuild clean build \
+          -project HouseChores.xcodeproj \
+          -scheme HouseChores \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest'
+
+    - name: Run Tests
+      run: |
+        xcodebuild test \
+          -project HouseChores.xcodeproj \
+          -scheme HouseChores \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest'
+
+  deploy-testflight:
+    name: Deploy to TestFlight
+    runs-on: macos-latest
+    needs: build-and-test
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Select Xcode
+      run: sudo xcode-select -s /Applications/Xcode_15.2.app
+
+    - name: Import Certificate
+      env:
+        CERTIFICATE_BASE64: ${{ secrets.DISTRIBUTION_CERTIFICATE_BASE64 }}
+        CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
+      run: |
+        # Create keychain
+        security create-keychain -p actions temp.keychain
+        security default-keychain -s temp.keychain
+        security unlock-keychain -p actions temp.keychain
+        security set-keychain-settings -t 3600 -u temp.keychain
+
+        # Import certificate
+        echo $CERTIFICATE_BASE64 | base64 --decode > certificate.p12
+        security import certificate.p12 -k temp.keychain -P $CERTIFICATE_PASSWORD -T /usr/bin/codesign -T /usr/bin/security
+        security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k actions temp.keychain
+
+        # Clean up
+        rm certificate.p12
+
+    - name: Install Fastlane
+      run: |
+        gem install fastlane
+
+    - name: Build and Upload to TestFlight
+      env:
+        APPLE_ID: ${{ secrets.APPLE_ID }}
+        APP_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
+        TEAM_ID: ${{ secrets.TEAM_ID }}
+      run: |
+        fastlane run build_app \
+          scheme:"HouseChores" \
+          export_method:"app-store" \
+          export_options:{compileBitcode:false,manageAppVersionAndBuildNumber:false}
+        
+        fastlane run upload_to_testflight \
+          username:"$APPLE_ID" \
+          app_identifier:"$(xcodebuild -showBuildSettings | grep PRODUCT_BUNDLE_IDENTIFIER | sed 's/[ ]*PRODUCT_BUNDLE_IDENTIFIER = //')" \
+          skip_waiting_for_build_processing:true
+
+    - name: Cleanup Keychain
+      if: always()
+      run: |
+        security delete-keychain temp.keychain || true

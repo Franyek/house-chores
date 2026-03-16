@@ -27,8 +27,8 @@
 
 - [ ] **Edit mode visual distinction** - Implement one of the discussed options (banner, icons, fade)
 - [ ] **Dark mode testing** - Test and fix any dark mode issues
-- [ ] **App icon** - Add proper app icon
-- [ ] **Empty state** - Already done ✅
+- [X] **App icon** - Add proper app icon
+- [X] **Empty state** - Already done ✅
 - [ ] **Improve spacing** - Fine tune padding in ChoreRow
 
 ## 4. App Store Preparation
