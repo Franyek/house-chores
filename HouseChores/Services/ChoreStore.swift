@@ -42,8 +42,8 @@ class ChoreStore: ObservableObject {
         if let index = chores.firstIndex(where: { $0.id == id }) {
             chores[index].name = name
             chores[index].frequencyInDays = frequencyInDays
-            chores[index].emoji = emoji
-            chores[index].lastDone = lastDone
+            chores[index].emoji = emoji ?? chores[index].emoji
+            chores[index].lastDone = lastDone ?? chores[index].lastDone
         }
     }
     func markAsDone(id: UUID) {
