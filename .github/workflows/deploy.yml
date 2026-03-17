@@ -41,9 +41,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Select Xcode
-      run: sudo xcode-select -s /Applications/Xcode_15.2.app
-
     - name: Import Certificate
       env:
         CERTIFICATE_BASE64: ${{ secrets.DISTRIBUTION_CERTIFICATE_BASE64 }}
