@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA0A12F42F6404C500BF017C /* deploy.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA0A12F32F6404BB00BF017C /* deploy.txt */; };
+		AA0A12FB2F69873700BF017C /* ExportOptions.plist in Sources */ = {isa = PBXBuildFile; fileRef = AA0A12FA2F69872A00BF017C /* ExportOptions.plist */; };
 		AA43BB8F2F29F79400C38282 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AA43BB8C2F29F79400C38282 /* README.md */; };
 		AA43BB902F29F79400C38282 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = AA43BB8E2F29F79400C38282 /* TODO.md */; };
 		AA43BB912F29F79400C38282 /* README-1.md in Resources */ = {isa = PBXBuildFile; fileRef = AA43BB8D2F29F79400C38282 /* README-1.md */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		AA0A12F32F6404BB00BF017C /* deploy.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = deploy.txt; sourceTree = "<group>"; };
+		AA0A12FA2F69872A00BF017C /* ExportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportOptions.plist; sourceTree = "<group>"; };
 		AA43BB4F2F13800100C38282 /* HouseChores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseChores.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA43BB8C2F29F79400C38282 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AA43BB8D2F29F79400C38282 /* README-1.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "README-1.md"; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		AA43BB462F13800100C38282 = {
 			isa = PBXGroup;
 			children = (
+				AA0A12FA2F69872A00BF017C /* ExportOptions.plist */,
 				AA0A12F62F6828EA00BF017C /* .github */,
 				AA0A12F32F6404BB00BF017C /* deploy.txt */,
 				AA43BC7D2F37AF1D00C38282 /* Edit-MODE-IDEAS.md */,
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0A12FB2F69873700BF017C /* ExportOptions.plist in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

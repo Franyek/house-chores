@@ -70,15 +70,26 @@ jobs:
         APP_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
         TEAM_ID: ${{ secrets.TEAM_ID }}
       run: |
-        fastlane run build_app \
-          scheme:"HouseChores" \
-          export_method:"app-store" \
-          export_options:{compileBitcode:false,manageAppVersionAndBuildNumber:false}
+        # Build the app
+        xcodebuild -project HouseChores.xcodeproj \
+          -scheme HouseChores \
+          -configuration Release \
+          -archivePath $PWD/build/HouseChores.xcarchive \
+          -destination 'generic/platform=iOS' \
+          clean archive
         
-        fastlane run upload_to_testflight \
-          username:"$APPLE_ID" \
-          app_identifier:"$(xcodebuild -showBuildSettings | grep PRODUCT_BUNDLE_IDENTIFIER | sed 's/[ ]*PRODUCT_BUNDLE_IDENTIFIER = //')" \
-          skip_waiting_for_build_processing:true
+        # Export for App Store
+        xcodebuild -archivePath $PWD/build/HouseChores.xcarchive \
+          -exportArchive \
+          -exportPath $PWD/build \
+          -exportOptionsPlist ExportOptions.plist
+        
+        # Upload to TestFlight
+        xcrun altool --upload-app \
+          --type ios \
+          --file $PWD/build/*.ipa \
+          --username "$APPLE_ID" \
+          --password "$APP_SPECIFIC_PASSWORD"
 
     - name: Cleanup Keychain
       if: always()
