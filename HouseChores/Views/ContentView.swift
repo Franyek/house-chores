@@ -28,48 +28,36 @@ struct ContentView: View {
                     )
                 } else {
                     List(store.sortedChores) { chore in
-                        Button(action: {
-                            if isEditMode {
-                                // In edit mode, tap opens edit sheet
-                                choreToEdit = chore
-                            } else {
-                                let generator = UIImpactFeedbackGenerator(style: .medium)
-                                generator.impactOccurred()
-                                
-                                // In normal mode, tap marks as done
-                                store.markAsDone(id: chore.id)
+                        ChoreRow(chore: chore, store: store, isEditMode: isEditMode)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                if isEditMode {
+                                    choreToEdit = chore
+                                } else {
+                                    let generator = UIImpactFeedbackGenerator(style: .medium)
+                                    generator.impactOccurred()
+                                    store.markAsDone(id: chore.id)
+                                }
                             }
-                        }) {
-                            ChoreRow(chore: chore, store: store, isEditMode: isEditMode)
-                        }
-                        .buttonStyle(.plain)
-                        .scaleEffect(isPressed ? 0.95 : 1.0)
-                        .gesture(
-                                    DragGesture(minimumDistance: 0)
-                                        .updating($isPressed) { _, state, _ in
-                                            state = true
-                                        }
-                                )
-                        .scrollContentBackground(isEditMode ? .hidden : .visible)
-                        .background(isEditMode ? Color.orange.opacity(0.1) : Color.clear)
-                        .animation(.easeInOut(duration: 0.3), value: isEditMode)
-                        .swipeActions(edge: .trailing){
-                            Button(role: .destructive){
-                                choreToDelete = chore
-                                showingDeleteConfirmation = true
-                            } label: {
-                                Label("Delete", systemImage: "trash")
+                            .listRowBackground(isEditMode ? Color.orange.opacity(0.1) : Color.clear)
+                            .swipeActions(edge: .trailing) {
+                                Button(role: .destructive) {
+                                    choreToDelete = chore
+                                    showingDeleteConfirmation = true
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
                             }
-                        }
-                        .swipeActions(edge: .leading){
-                            Button{
-                                choreToEdit = chore
-                            } label: {
-                                Label("Edit", systemImage: "pencil")
+                            .swipeActions(edge: .leading) {
+                                Button {
+                                    choreToEdit = chore
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
+                                }
+                                .tint(.blue)
                             }
-                            .tint(.blue)
-                        }
                     }
+                    .animation(.easeInOut(duration: 0.3), value: isEditMode)
                 }
             }
             .padding()
