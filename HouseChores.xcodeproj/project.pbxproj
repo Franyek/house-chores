@@ -34,6 +34,7 @@
 		AA43BC0B2F29F8FB00C38282 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		AA43BC6D2F30DF7800C38282 /* HouseChoresTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HouseChoresTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA43BC7D2F37AF1D00C38282 /* Edit-MODE-IDEAS.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Edit-MODE-IDEAS.md"; sourceTree = "<group>"; };
+		AAA75B602FA735F500700C1A /* PRIVACY_POLICY.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRIVACY_POLICY.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +76,7 @@
 		AA43BB462F13800100C38282 = {
 			isa = PBXGroup;
 			children = (
+				AAA75B602FA735F500700C1A /* PRIVACY_POLICY.md */,
 				AA0A12FA2F69872A00BF017C /* ExportOptions.plist */,
 				AA0A12F62F6828EA00BF017C /* .github */,
 				AA0A12F32F6404BB00BF017C /* deploy.txt */,
@@ -395,8 +397,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 997Z2PYRDJ;
 				ENABLE_PREVIEWS = YES;

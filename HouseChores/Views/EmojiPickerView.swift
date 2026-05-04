@@ -15,6 +15,7 @@ struct EmojiPickerView: View {
         // Home & Cleaning
         "🏠", "🧹", "🧼", "🧽", "🪣", "🧴",
         "🚿", "🛁", "🚽", "🗑️", "♻️", "🧺",
+        "🛏️", "🛋️", 
         
         // Plants & Garden
         "🌱", "🪴", "🌿", "🌸", "🌻", "🌷",
