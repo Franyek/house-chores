@@ -50,28 +50,32 @@ struct EditChoreView: View {
                 
                 Section("Last Completed") {
                     if let date = lastDone {
-                        HStack {
-                            Text("Last done")
-                            Spacer()
-                            Text(date.formatted(date: .abbreviated, time: .omitted))
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        Button("Change Date") {
+                        Button(action: {
                             showingDatePicker = true
+                        }) {
+                            HStack {
+                                Text("Last done")
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Text(date.formatted(date: .abbreviated, time: .omitted))
+                                    .foregroundColor(.blue)
+                            }
                         }
                         
                         Button("Clear Date", role: .destructive) {
                             lastDone = nil
                         }
                     } else {
-                        HStack {
-                            Text("Never completed")
-                                .foregroundColor(.secondary)
-                            Spacer()
-                            Button("Set Date") {
-                                lastDone = Date()
-                                showingDatePicker = true
+                        Button(action: {
+                            lastDone = Date()
+                            showingDatePicker = true
+                        }) {
+                            HStack {
+                                Text("Last done")
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Text("Not set")
+                                    .foregroundColor(.secondary)
                             }
                         }
                     }
